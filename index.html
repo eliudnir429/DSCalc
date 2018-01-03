@@ -1,0 +1,199 @@
+﻿<!DOCTYPE html>
+    <head>
+        <meta charset="UTF-8">
+        <title>DSCalc</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css">
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+
+    <body>
+        <header class="nav">
+            <div class="nav-left">
+                <span class="rainbow">綺羅星</span>
+            </div>
+            <div class="hero is-info is-bold">
+                <div class="hero-body">
+                    <div class="container">
+                        <h1 class="title">DARK SOULS Status Simulator</h1>
+                        <h2 class="subtitle">sampletext</h2>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="columns is-centered">
+            <div class="column is-2">
+                <div class="box">
+                    <form name="class">
+                        <span>Start class: </span>
+                        <select name="_class">
+                            <option value="warrior">戦士</option>
+                            <option value="knight">騎士</option>
+                            <option value="wanderer">放浪者</option>
+                            <option value="thief">盗人</option>
+                            <option value="bandit">山賊</option>
+                            <option value="hunter">狩人</option>
+                            <option value="sorcerer">魔術師</option>
+                            <option value="pyromancer">呪術師</option>
+                            <option value="cleric">聖職者</option>
+                            <option value="deprived">持たざるもの</option>
+                        </select><br>
+                    </form>
+
+                    <div class="columns">
+                        <div class="column">
+                            <span>Soul level: </span><br>
+                            <span>Vitality: </span><br>
+                            <span>Attunement: </span><br>
+                            <span>Endurance: </span><br>
+                            <span>Strength: </span><br>
+                            <span>Dexterity: </span><br>
+                            <span>Resistance: </span><br>
+                            <span>Intelligence: </span><br>
+                            <span>Faith: </span><br>
+                        </div>
+                        <div class="column">
+                            <form name="status">
+                                <input name="slv" type="text"><br>
+                                <input name="vit" type="text"><br>
+                                <input name="att" type="text"><br>
+                                <input name="end" type="text"><br>
+                                <input name="str" type="text"><br>
+                                <input name="dex" type="text"><br>
+                                <input name="res" type="text"><br>
+                                <input name="int" type="text"><br>
+                                <input name="fai" type="text"><br>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column is-2">
+                <div class="box">
+                    <div class="columns">
+                        <div class="column">
+                            <span>HP: </span><br>
+                            <span>Stamina: </span><br>
+                            <span>Equip load: </span><br>
+                            <span>%: </span><br>
+                            <span>Physical def: </span><br>
+                            <span>Poise: </span><br>
+                            <span>RH1: </span><br>
+                            <span>RH2: </span><br>
+                            <span>LH1: </span><br>
+                            <span>LH2: </span><br>
+                        </div>
+                        <div class="column">
+                            <form name="status">
+                                <input name="hp"><br>
+                                <input name='stamina'><br>
+                                <input name='equipLoad'><br>
+                                <input name='useEquipLoad'><br>
+                                <input name='physicalDefence'><br>
+                                <input name='poise'><br>
+                                <input name="rightHandAttack1"><br>
+                                <input name='rightHandAttack2'><br>
+                                <input name='leftHandAttack1'><br>
+                                <input name='leftHandAttack2'><br>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-2">
+                <div class="box">
+                    <div class="columns">
+                        <div class="column">
+                            <span>RH:</span><br><br>
+                            <span>LH:</span><br><br>
+                            <span>Head:</span><br>
+                            <span>Chest:</span><br>
+                            <span>Hands:</span><br>
+                            <span>Legs:</span><br>
+                            <span>Rings:</span><br>
+                        </div>
+                        <div class="column">
+                            <form name='weapon'>
+                                <select name='rightHand1'>
+                                        <option value='fist'>Bare fist</option>
+                                        <option value='murakumo'>Murakumo</option>
+                                        <option value='greatClub'>Great club</option>
+                                        <option value='zweihender'>Zweinhender</option>
+                                </select><br>
+                                <select name='rightHand2'>
+                                    <option value='fist'>Bare fist</option>
+                                    <option value='murakumo'>Murakumo</option>
+                                    <option value='greatClub'>Great club</option>
+                                    <option value='zweihender'>Zweinhender</option>
+                                </select><br>
+                                <select name='leftHand1'>
+                                    <option value='fist'>Bare fist</option>
+                                    <option value='smallLeatherShield'>Small leather shield</option>
+                                </select><br>
+                                <select name='leftHand2'>
+                                    <option value='fist'>Bare fist</option>
+                                </select><br>
+                            </form>
+                            <form name='armor'>
+                                <select name='head'>
+                                    <option value='none'>None</option>
+                                    <option value='maskOfMother'>Mask of mother</option>
+                                </select><br>
+                                <select name='chest'>
+                                    <option value='none'>None</option>
+                                    <option value=havelsArmor>Havel's armor</option>
+                                </select><br>
+                                <select name='hands' id='gauntlet'>
+                                    <option value='none'>None</option>
+                                    <option value='ironBracelet'>Iron bracelet</option>
+                                </select><br>
+                                <select name='legs' id='regins'>
+                                    <option value='none'>None</option>
+                                    <option value='hollowSoldierWaistcloth'>Hollow soldier waistcloth</option>
+                                </select><br>
+                                <select name='rings1'>
+                                    <option value='none'>None</option>
+                                    <option value='havelsRing'>Havel's ring</option>
+                                    <option value='tinyBeingsRing'>Tiny being's ring</option>
+                                    <option value='ringOfFavorAndProtection'>Ring of favor and protection</option>
+                                </select><br>
+                                <select name='rings2'>
+                                    <option value='none'>None</option>
+                                    <option value='havelsRing'>Havel's ring</option>
+                                    <option value='tinyBeingsRing'>Tiny being's ring</option>
+                                    <option value='ringOfFavorAndProtection'>Ring of favor and protection</option>
+                                </select><br>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <div class="columns is-centered">
+                <div class="column is-6">
+                    <div class="box">
+                        <span>SPELLS:</span>
+                        <form name='spells'>
+                            <select name="slot1"></select>
+                            <select name="slot2"></select>
+                            <select name="slot3"></select>
+                            <select name="slot4"></select>
+                            <select name="slot5"></select>
+                            <select name="slot6"></select>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        <footer class="footer">
+            <div class="container">
+                <div class="content has-text-centered">
+                    <a href="game/index.html">ブラッドボーン</a>
+                </div>
+            </div>
+        </footer>
+    </body>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/rainbow.js"></script>
+    <script src='scripts/calculate.js'></script>
+</html>

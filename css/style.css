@@ -1,0 +1,21 @@
+@charset "utf-8";
+
+span.rainbow{
+	font-weight:bold;
+	font-style:italic;
+	font-family:Impact,serif;
+	font-size: 120%;
+}
+
+main{
+	background-color: #eeeeee;
+}
+
+header{
+	background-color: black;
+}
+
+input{
+	width: 50%;
+	float: right;
+}
