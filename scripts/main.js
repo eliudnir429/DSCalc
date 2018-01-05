@@ -1,124 +1,61 @@
 window.onload=function(){
-    var form=document.forms.class;
-    setStatus();
+    var identity=document.getElementById("identity");
+    var basicStatus=document.getElementById("basicStatus");
+
+    setParameter();
+    calculate();
     rainbowMsg();
-    form._class.onchange=setStatus;
+    aho();
+    identity.addEventListener("change", setParameter);
+    identity.addEventListener("change", calculate);
+    basicStatus.addEventListener("change", calculate);
 }
 
-function setStatus(){
-    console.log('setStatus() was called!')
-    var playerClass=document.forms.class;
-    var playerStatus=document.forms.status;
-    var status={};
-    var soulLevel=0;
+function setParameter(){
+    console.log('setParameter() was called!')
+    const param_ids=["slv", "vit", "att", "end", "str", "dex", "res", "int", "fai"];
+    const paramWarrior  =[4,11,8,12,13,13,11,9,9];
+    const paramKnight   =[5,14,8,12,13,13,11,9,9];
+    const paramWanderer =[3,10,11,10,10,14,12,11,8];
+    const paramThief    =[5,9,11,9,9,15,10,12,11];
+    const paramBandit   =[4,12,8,14,14,9,11,8,10];
+    const paramHunter   =[4,11,9,11,12,14,11,9,9];
+    const paramSorcerer =[3,8,15,8,9,11,8,15,8];
+    const paramPyromancer=[1,10,12,11,12,9,12,10,8];
+    const paramCleric   =[2,11,11,9,12,8,11,8,14];
+    const paramDeprived =[6,11,11,11,11,11,11,11,11];
+    var identity=document.getElementById("identity");
 
-    if(playerClass._class.value == 'warrior'){
-        status.vit= 11;
-        status.att= 8;
-        status.end= 12;
-        status.str= 13;
-        status.dex= 13;
-        status.res= 11;
-        status.int= 9;
-        status.fai= 9;
-    }else if(playerClass._class.value == 'knight'){
-        status.vit= 14;
-        status.att= 8;
-        status.end= 12;
-        status.str= 13;
-        status.dex= 13;
-        status.res= 11;
-        status.int= 9;
-        status.fai= 9;
-    }else if(playerClass._class.value == 'wanderer'){
-        status.vit= 10 ;
-        status.att= 11;
-        status.end= 10;
-        status.str= 10;
-        status.dex= 14;
-        status.res= 12;
-        status.int= 11;
-        status.fai= 8;
-    }else if(playerClass._class.value == 'thief'){
-        status.vit= 09;
-        status.att= 11;
-        status.end= 09;
-        status.str= 09;
-        status.dex= 15;
-        status.res= 10;
-        status.int= 12;
-        status.fai= 11;
-    }else if(playerClass._class.value == 'bandit'){
-        status.vit= 12;
-        status.att= 8;
-        status.end= 14;
-        status.str= 14;
-        status.dex= 9;
-        status.res= 11;
-        status.int= 8;
-        status.fai= 10;
-    }else if(playerClass._class.value == 'hunter'){
-        status.vit= 11;
-        status.att= 9;
-        status.end= 11;
-        status.str= 12;
-        status.dex= 14;
-        status.res= 11;
-        status.int= 9;
-        status.fai= 9;
-    }else if(playerClass._class.value == 'sorcerer'){
-        status.vit = 8;
-        status.att = 15;
-        status.end = 8;
-        status.str = 9;
-        status.dex = 11;
-        status.res = 8;
-        status.int = 15;
-        status.fai = 8;
-    }else if(playerClass._class.value == 'pyromancer'){
-        status.vit = 10;
-        status.att = 12;
-        status.end = 11;
-        status.str = 12;
-        status.dex = 9;
-        status.res = 12;
-        status.int = 10;
-        status.fai = 8;
-    }else if(playerClass._class.value == 'cleric'){
-        status.vit = 11;
-        status.att = 11;
-        status.end = 9;
-        status.str = 12;
-        status.dex = 8;
-        status.res = 11;
-        status.int = 8;
-        status.fai = 14;
-    }else if(playerClass._class.value == 'deprived'){
-        status.vit = 11;
-        status.att = 11;
-        status.end = 11;
-        status.str = 11;
-        status.dex = 11;
-        status.res = 11;
-        status.int = 11;
-        status.fai = 11;
+    switch(identity.value){
+        case "warrior"  :updateParameter(param_ids, paramWarrior); break;
+        case "knight"   :updateParameter(param_ids, paramKnight); break;
+        case "wanderer" :updateParameter(param_ids, paramWarrior); break;
+        case "thief"    :updateParameter(param_ids, paramThief); break;
+        case "bandit"   :updateParameter(param_ids, paramBandit); break;
+        case "hunter"   :updateParameter(param_ids, paramHunter); break;
+        case "sorcerer" :updateParameter(param_ids, paramSorcerer); break;
+        case "pyromancer":updateParameter(param_ids, paramPyromancer); break;
+        case "cleric"   :updateParameter(param_ids, paramCleric); break;
+        case "deprived" :updateParameter(param_ids, paramDeprived); break;
     }
-    playerStatus.vit.value=status.vit;
-    playerStatus.att.value=status.att;
-    playerStatus.end.value=status.end;
-    playerStatus.str.value=status.str;
-    playerStatus.dex.value=status.dex;
-    playerStatus.res.value=status.res;
-    playerStatus.int.value=status.int;
-    playerStatus.fai.value=status.fai;
-    soulLevel=parseInt(status.vit)
-                +parseInt(status.att)
-                +parseInt(status.end)
-                +parseInt(status.str)
-                +parseInt(status.dex)
-                +parseInt(status.res)
-                +parseInt(status.int)
-                +parseInt(status.fai)
-                -78;
-    playerStatus.slv.value=soulLevel;
+}
+
+function updateParameter(param_ids, paramTable){
+    param_ids.forEach((val, index) => {
+        var target=document.getElementById(val);
+        target.value=paramTable[index];
+    });
+}
+
+function aho(){
+    var obj=document.getElementById("baka");
+
+    function uma(){
+        obj.innerHTML="馬";
+    }
+    function sika(){
+        obj.innerHTML="鹿";
+    }
+    obj.onmouseover=sika;
+    obj.onmouseout=uma;
 }
