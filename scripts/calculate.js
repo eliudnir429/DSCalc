@@ -31,16 +31,22 @@ function calcMainParameter(basicStatus){
     ];
 
     //HP
-    hp.value=HEALTH[VIT-8];
-    //STAMINA
+    if(VIT<8){
+        hp.value=HEALTH[0];
+    }else{
+        hp.value=HEALTH[VIT-8];
+    }
+    //STAMINA, EQUIP LOAD
     if(END>40){
         stamina.value=STAMINA[STAMINA.length-1];
-    }else{
-        stamina.value=STAMINA[END-8];
+    }else if(END<8){
+        stamina.value=STAMINA[0];
+        equipLoad.value=48;
     }
-    //EQUIP LOAD
-    equipLoad.value=48+(END-8);
-
+    else{
+        stamina.value=STAMINA[END-8];
+        equipLoad.value=48+(END-8);
+    }
 }
 /*
 function calcAttack(str, dex){
