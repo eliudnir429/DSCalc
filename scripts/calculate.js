@@ -1,8 +1,12 @@
 ﻿function calculate(){
     console.log('calculate() was called!');
     var basicStatus=document.getElementById("basicStatus");
+    var weapon=document.getElementById("weapon");
+    var armor=document.getElementById("Armor");
 
     calcMainParameter(basicStatus);
+    calcAttackParameter(weapon);
+    calcPoiseParameter(armor);
 }
 
 function calcMainParameter(basicStatus){
@@ -48,89 +52,25 @@ function calcMainParameter(basicStatus){
         equipLoad.value=48+(END-8);
     }
 }
-/*
-function calcAttack(str, dex){
-	var rightHandAttack1, rightHandAttack2, leftHandAttack1, leftHandAttack2;
-    
-	rightHandAttack1 = 20;
-    if(document.getElementById('rightHandWeapon1').value=='fist'){
-        rightHandAttack1=20+(str*0.2);
-    }
-    if(document.getElementById('rightHandWeapon1').value=='murakumo'){
-        rightHandAttack1 = 282 + (str * 1) + (dex * 6);
-	}
-    if(document.getElementById('rightHandWeapon1').value=='greatClub'){
-		rightHandAttack1 = 337 + (str * 8) + (dex * 0);
-	}
-    if(document.getElementById('rightHandWeapon1').value=='zweihender'){
-		rightHandAttack1 = 325 + (str * 4) + (dex * 3);
-	}
-	document.result.rightHandAttack1.value = parseInt(rightHandAttack1);
 
-    rightHandAttack2=20;
-    if(document.getElementById('rightHandWeapon2').value=='fist'){
-        rightHandAttack2=20+(str*0.2);
-    }
-    if(document.getElementById('rightHandWeapon2').value=='murakumo'){
-        rightHandAttack2 = 282 + (str * 1) + (dex * 6);
-	}
-    if(document.getElementById('rightHandWeapon2').value=='greatClub'){
-		rightHandAttack2 = 337 + (str * 8) + (dex * 0);
-	}
-    if(document.getElementById('rightHandWeapon2').value=='zweihender'){
-		rightHandAttack2 = 325 + (str * 4) + (dex * 3);
-	}
-	document.result.rightHandAttack2.value = parseInt(rightHandAttack2);
+function calcAttackParameter(weapon){
+    var RHweaponName1=weapon.rightHand1.value;
+    var RHweaponName2=weapon.rightHand2.value;
+    var LHweaponName1=weapon.leftHand1.value;
+    var LHweaponName2=weapon.leftHand2.value;
+    var detailedStatus=document.getElementById("detailedStatus");
 
-    leftHandAttack1=20;
-    if(document.getElementById('leftHandWeapon1').value=='fist'){
-        leftHandAttack1=20+(str*0.2);
-    }
-    if(document.getElementById('leftHandWeapon1').value=='murakumo'){
-        leftHandAttack1 = 282 + (str * 1) + (dex * 6);
-	}
-    if(document.getElementById('leftHandWeapon1').value=='greatClub'){
-		leftHandAttack1 = 337 + (str * 8) + (dex * 0);
-	}
-    if(document.getElementById('leftHandWeapon1').value=='zweihender'){
-		leftHandAttack1 = 325 + (str * 4) + (dex * 3);
-	}
-	document.result.leftHandAttack1.value = parseInt(leftHandAttack1);
-
-    leftHandAttack2=20;
-    if(document.getElementById('leftHandWeapon2').value=='fist'){
-        leftHandAttack2=20+(str*0.2);
-    }
-    if(document.getElementById('leftHandWeapon2').value=='murakumo'){
-        leftHandAttack2 = 282 + (str * 1) + (dex * 6);
-	}
-    if(document.getElementById('leftHandWeapon2').value=='greatClub'){
-		leftHandAttack2 = 337 + (str * 8) + (dex * 0);
-	}
-    if(document.getElementById('leftHandWeapon2').value=='zweihender'){
-		leftHandAttack2 = 325 + (str * 4) + (dex * 3);
-	}
-	document.result.leftHandAttack2.value = parseInt(leftHandAttack2);
-
+    detailedStatus.rightHandAttack1.value=weaponParameter[RHweaponName1].pysicalAttackPower;
+    detailedStatus.rightHandAttack2.value=weaponParameter[RHweaponName2].pysicalAttackPower;
+    detailedStatus.leftHandAttack1.value=weaponParameter[LHweaponName1].pysicalAttackPower;
+    detailedStatus.leftHandAttack2.value=weaponParameter[LHweaponName2].pysicalAttackPower;
 }
-*/
 
-/*
-function calcPoise(){
-    var poise=0;
+function calcPoise(armor){
+    var poise=document.getElementById("poise");
 
-    if(document.getElementById('armor').value   =='havelsArmor'){
-        poise+=47;
-    }
-    if(document.getElementById('gauntlet').value=='ironBracelet'){
-        poise+=7;
-    }
-    if(document.getElementById('regins').value  =='hollowSoldierWaistcloth'){
-        poise+=7;
-    }
-    document.result.poise.value=parseInt(poise);
+    poise.value=0;
 }
-*/
 
 /*
 function calcDefence(){
