@@ -2,6 +2,7 @@ window.onload=function(){
     var identity=document.getElementById("identity");
     var basicStatus=document.getElementById("basicStatus");
     var weapon=document.getElementById("weapon");
+    var armor=document.getElementById("armor");
 
     setParameter();
     calculate();
@@ -11,6 +12,7 @@ window.onload=function(){
     identity.addEventListener("change", calculate);
     basicStatus.addEventListener("change", calculate);
     weapon.addEventListener("change", calculate);
+    armor.addEventListener("change", calculate);
 }
 
 function setParameter(){

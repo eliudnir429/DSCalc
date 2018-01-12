@@ -68,7 +68,7 @@
             </div>
             </div>
             </div>
-            <div class="column is-2">
+            <div class="column is-3">
             <div class="box">
             <div class="columns">
                 <div class="column">
@@ -77,6 +77,12 @@
                     <span>Equip load: </span><br>
                     <span>%: </span><br>
                     <span>Physical def: </span><br>
+                    <span>vs Strike:</span><br>
+                    <span>vs Slash:</span><br>
+                    <span>vs Thrust:</span><br>
+                    <span>Magical Def:</span><br>
+                    <span>Flame Def:</span><br>
+                    <span>Thunder Def:</span><br>
                     <span>Poise: </span><br>
                     <span>RH1: </span><br>
                     <span>RH2: </span><br>
@@ -87,9 +93,16 @@
                     <form id="detailedStatus">
                         <input id="hp"><br>
                         <input id='stamina'><br>
-                        <input id='equipLoad'><br><br>
+                        <input id='equipLoad'>
+                        <input id="usingEquipLoad"><br>
                         <input id='useEquipLoad'><br>
                         <input id='physicalDefence'><br>
+                        <input id="vsStrike"><br>
+                        <input id="vsSlash"><br>
+                        <input id="vsThrust"><br>
+                        <input id="magicalDef"><br>
+                        <input id="flameDef"><br>
+                        <input id="thuderDef"><br>
                         <input id='poise'><br>
                         <input id="rightHandAttack1"><br>
                         <input id='rightHandAttack2'><br>
@@ -131,19 +144,19 @@
                         </form>
                         <form id='armor'>
                             <select id='head'>
-                                <option value='none'>None</option>
+                                <option value='naked'>Naked</option>
                                 <option value='maskOfMother'>Mask of mother</option>
                             </select><br>
                             <select id='chest'>
-                                <option value='none'>None</option>
+                                <option value='naked'>Naked</option>
                                 <option value=havelsArmor>Havel's armor</option>
                             </select><br>
                             <select id='hands' id='gauntlet'>
-                                <option value='none'>None</option>
+                                <option value='naked'>Naked</option>
                                 <option value='ironBracelet'>Iron bracelet</option>
                             </select><br>
                             <select id='legs' id='regins'>
-                                <option value='none'>None</option>
+                                <option value='naked'>Naked</option>
                                 <option value='hollowSoldierWaistcloth'>Hollow soldier waistcloth</option>
                             </select><br>
                             <select id='rings1'>

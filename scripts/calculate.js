@@ -2,7 +2,7 @@
     console.log('calculate() was called!');
     var basicStatus=document.getElementById("basicStatus");
     var weapon=document.getElementById("weapon");
-    var armor=document.getElementById("Armor");
+    var armor=document.getElementById("armor");
 
     calcMainParameter(basicStatus);
     calcAttackParameter(weapon);
@@ -66,10 +66,17 @@ function calcAttackParameter(weapon){
     detailedStatus.leftHandAttack2.value=weaponParameter[LHweaponName2].pysicalAttackPower;
 }
 
-function calcPoise(armor){
+function calcPoiseParameter(armor){
     var poise=document.getElementById("poise");
+    var headArmorName=armor.head.value;
+    var chestArmorName=armor.chest.value;
+    var handsArmorName=armor.hands.value;
+    var legsArmorName=armor.legs.value;
 
-    poise.value=0;
+    poise.value=armorParameter[headArmorName].poise
+        +armorParameter[chestArmorName].poise
+        +armorParameter[handsArmorName].poise
+        +armorParameter[legsArmorName].poise;
 }
 
 /*
