@@ -1,12 +1,12 @@
 var weaponParameter={
     fists:{
-        pysicalAttackPower:20,
+        physicalAttackPower:20,
         magicalAttackPower:0,
         flameAttackPower:0,
         thunderAttackPower:0,
         fatal:100,
 
-        pysicalCutRatio:0,
+        physicalCutRatio:0,
         magicalCutRatio:0,
         flameCutRatio:0,
         thunderCutRatio:0,
@@ -19,13 +19,13 @@ var weaponParameter={
         faiCorrection:"x"
     },
     murakumo:{
-        pysicalAttackPower:282,
+        physicalAttackPower:282,
         magicalAttackPower:0,
         flameAttackPower:0,
         thunderAttackPower:0,
         fatal:100,
 
-        pysicalCutRatio:60,
+        physicalCutRatio:60,
         magicalCutRatio:10,
         flameCutRatio:40,
         thunderCutRatio:40,
@@ -41,7 +41,7 @@ var weaponParameter={
 
 var armorParameter={
     naked:{
-        pysicalDefence:0.0,
+        physicalDefence:0.0,
         vsStrike:0.0,
         vsSlash:0.0,
         vsThrust:0.0,
@@ -57,7 +57,7 @@ var armorParameter={
         weight:0.0
     },
     maskOfMother:{
-        pysicalDefence:6.0,
+        physicalDefence:6.0,
         vsStrike:6.0,
         vsSlash:6.0,
         vsThrust:6.0,
@@ -73,7 +73,7 @@ var armorParameter={
         weight:1.2
     },
     havelsArmor:{
-        pysicalDefence:92.0,
+        physicalDefence:92.0,
         vsStrike:56.0,
         vsSlash:54.0,
         vsThrust:49.0,
@@ -89,7 +89,7 @@ var armorParameter={
         weight:19.5
     },
     ironBracelet:{
-        pysicalDefence:17.0,
+        physicalDefence:17.0,
         vsStrike:10.0,
         vsSlash:10.0,
         vsThrust:9.0,
@@ -105,7 +105,7 @@ var armorParameter={
         weight:4.3
     },
     hollowSoldierWaistcloth:{
-        pysicalDefence:13.0,
+        physicalDefence:13.0,
         vsStrike:13.0,
         vsSlash:14.4,
         vsThrust:11.4,

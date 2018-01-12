@@ -4,15 +4,14 @@
     var weapon=document.getElementById("weapon");
     var armor=document.getElementById("armor");
 
-    calcMainParameter(basicStatus);
+    calcMainParameter(basicStatus, armor);
+    calcSubParameter(armor);
     calcAttackParameter(weapon);
-    calcPoiseParameter(armor);
+    calcDefenceParameter(armor);
 }
 
-function calcMainParameter(basicStatus){
-    var hp=document.getElementById("hp");
-    var stamina=document.getElementById("stamina");
-    var equipLoad=document.getElementById("equipLoad");
+function calcMainParameter(basicStatus, armor){
+    var detailedStatus=document.getElementById("detailedStatus");
     var VIT=basicStatus.vit.value;
     var END=basicStatus.end.value;
     var HEALTH=[
@@ -36,84 +35,104 @@ function calcMainParameter(basicStatus){
 
     //HP
     if(VIT<8){
-        hp.value=HEALTH[0];
+        detailedStatus.hp.value=HEALTH[0];
     }else{
-        hp.value=HEALTH[VIT-8];
+        detailedStatus.hp.value=HEALTH[VIT-8];
     }
     //STAMINA, EQUIP LOAD
     if(END>40){
-        stamina.value=STAMINA[STAMINA.length-1];
+        detailedStatus.stamina.value=STAMINA[STAMINA.length-1];
+        detailedStatus.equipLoad.value=48+(END-8);
     }else if(END<8){
-        stamina.value=STAMINA[0];
-        equipLoad.value=48;
+        detailedStatus.stamina.value=STAMINA[0];
+        detailedStatus.equipLoad.value=48;
     }
     else{
-        stamina.value=STAMINA[END-8];
-        equipLoad.value=48+(END-8);
+        detailedStatus.stamina.value=STAMINA[END-8];
+        detailedStatus.equipLoad.value=48+(END-8);
     }
 }
 
-function calcAttackParameter(weapon){
+function calcSubParameter(armor){
+    var detailedStatus=document.getElementById("detailedStatus");
+    var headArmorName=armor.head.value;
+    var chestArmorName=armor.chest.value;
+    var handsArmorName=armor.hands.value;
+    var legsArmorName=armor.legs.value;
     var RHweaponName1=weapon.rightHand1.value;
     var RHweaponName2=weapon.rightHand2.value;
     var LHweaponName1=weapon.leftHand1.value;
     var LHweaponName2=weapon.leftHand2.value;
-    var detailedStatus=document.getElementById("detailedStatus");
+    var equipRatio;
 
-    detailedStatus.rightHandAttack1.value=weaponParameter[RHweaponName1].pysicalAttackPower;
-    detailedStatus.rightHandAttack2.value=weaponParameter[RHweaponName2].pysicalAttackPower;
-    detailedStatus.leftHandAttack1.value=weaponParameter[LHweaponName1].pysicalAttackPower;
-    detailedStatus.leftHandAttack2.value=weaponParameter[LHweaponName2].pysicalAttackPower;
+    //use equip load
+    detailedStatus.usingEquipLoad.value=armorParameter[headArmorName].weight
+    +armorParameter[chestArmorName].weight
+    +armorParameter[handsArmorName].weight
+    +armorParameter[legsArmorName].weight
+    +weaponParameter[RHweaponName1].weight
+    +weaponParameter[RHweaponName2].weight
+    +weaponParameter[LHweaponName1].weight
+    +weaponParameter[LHweaponName2].weight;
+    //equipload ratio
+    equipRatio=Math.floor((detailedStatus.usingEquipLoad.value
+        /detailedStatus.equipLoad.value*100)*10)/10;
+    detailedStatus.equipLoadRatio.value=equipRatio;
+    //poise
+    detailedStatus.poise.value=armorParameter[headArmorName].poise
+    +armorParameter[chestArmorName].poise
+    +armorParameter[handsArmorName].poise
+    +armorParameter[legsArmorName].poise;
 }
 
-function calcPoiseParameter(armor){
-    var poise=document.getElementById("poise");
+function calcAttackParameter(weapon){
+    var detailedStatus=document.getElementById("detailedStatus");
+    var RHweaponName1=weapon.rightHand1.value;
+    var RHweaponName2=weapon.rightHand2.value;
+    var LHweaponName1=weapon.leftHand1.value;
+    var LHweaponName2=weapon.leftHand2.value;
+
+    detailedStatus.rightHandAttack1.value=weaponParameter[RHweaponName1].physicalAttackPower;
+    detailedStatus.rightHandAttack2.value=weaponParameter[RHweaponName2].physicalAttackPower;
+    detailedStatus.leftHandAttack1.value=weaponParameter[LHweaponName1].physicalAttackPower;
+    detailedStatus.leftHandAttack2.value=weaponParameter[LHweaponName2].physicalAttackPower;
+}
+
+function calcDefenceParameter(armor){
+    var detailedStatus=document.getElementById("detailedStatus");
     var headArmorName=armor.head.value;
     var chestArmorName=armor.chest.value;
     var handsArmorName=armor.hands.value;
     var legsArmorName=armor.legs.value;
 
-    poise.value=armorParameter[headArmorName].poise
-        +armorParameter[chestArmorName].poise
-        +armorParameter[handsArmorName].poise
-        +armorParameter[legsArmorName].poise;
-}
+    //def
+    detailedStatus.physicalDefence.value=armorParameter[headArmorName].physicalDefence
+    +armorParameter[chestArmorName].physicalDefence
+    +armorParameter[headArmorName].physicalDefence
+    +armorParameter[legsArmorName].physicalDefence;
+    detailedStatus.vsStrike.value=armorParameter[headArmorName].vsStrike
+    +armorParameter[chestArmorName].vsStrike
+    +armorParameter[headArmorName].vsStrike
+    +armorParameter[legsArmorName].vsStrike;
+    detailedStatus.vsSlash.value=armorParameter[headArmorName].vsSlash
+    +armorParameter[chestArmorName].vsSlash
+    +armorParameter[headArmorName].vsSlash
+    +armorParameter[legsArmorName].vsSlash;
+    detailedStatus.vsThrust.value=armorParameter[headArmorName].vsThrust
+    +armorParameter[chestArmorName].vsThrust
+    +armorParameter[headArmorName].vsThrust
+    +armorParameter[legsArmorName].vsThrust;
 
-/*
-function calcDefence(){
-    var defence=0;
-    
-    if(document.getElementById('head').value    =='maskOfMother'){
-        defence+=6;
-    }
-    if(document.getElementById('armor').value   =='havelsArmor'){
-        defence+=92;
-    }
-    if(document.getElementById('gauntlet').value=='ironBracelet'){
-        defence+=17;
-    }
-    if(document.getElementById('regins').value  =='hollowSoldierWaistcloth'){
-        defence+=13;
-    }
-    document.result.physicalDefence.value=parseInt(defence);
+    detailedStatus.magicalDefence.value=armorParameter[headArmorName].magicalDefence
+    +armorParameter[chestArmorName].magicalDefence
+    +armorParameter[headArmorName].magicalDefence
+    +armorParameter[legsArmorName].magicalDefence;
+    detailedStatus.flameDefence.value=armorParameter[headArmorName].flameDefence
+    +armorParameter[chestArmorName].flameDefence
+    +armorParameter[headArmorName].flameDefence
+    +armorParameter[legsArmorName].flameDefence;
+    detailedStatus.thunderDefence.value=armorParameter[headArmorName].thunderDefence
+    +armorParameter[chestArmorName].thunderDefence
+    +armorParameter[headArmorName].thunderDefence
+    +armorParameter[legsArmorName].thunderDefence;
 }
-*/
-/*
-function calcUseEquipLoad(equipLoad){
-    var useEquipLoad=0;
-
-    if(document.getElementById('head').value    =='maskOfMother'){
-        useEquipLoad+=1.2;
-    }
-    if(document.getElementById('armor').value   =='havelsArmor'){
-        useEquipLoad+=19.5;
-    }
-    if(document.getElementById('gauntlet').value=='ironBracelet'){
-        useEquipLoad+=4.3;
-    }
-    if(document.getElementById('regins').value  =='hollowSoldierWaistcloth'){
-        useEquipLoad+=1.5;
-    }
-    document.result.useEquipLoad.value=parseInt((useEquipLoad/equipLoad)*100);
-}
-*/
