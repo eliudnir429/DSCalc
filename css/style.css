@@ -1,10 +1,13 @@
 @charset "utf-8";
-
+div{
+	border:1px solid #ff0000
+	
+}
 span.rainbow{
 	font-weight:bold;
 	font-style:italic;
-	font-family:Impact,serif;
-	font-size: 120%;
+	font-family:"serif";
+	font-size:20px;
 }
 
 main{
@@ -18,4 +21,5 @@ header{
 input{
 	width: 50%;
 	float: right;
+	border:1px solid #a1a1a1
 }
